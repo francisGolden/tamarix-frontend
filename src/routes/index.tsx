@@ -1,27 +1,13 @@
-import * as React from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
+import { GardenItem } from '../types/GardenItem';
 
 export const Route = createFileRoute('/')({
   component: HomeComponent,
 })
 
-type Plant = {
-  user: {
-    id: string
-    username: string
-    new: boolean
-  }
-  plantIdentifier: string
-  seedIdentifier: string
-  harvestTimestamp: string
-  quantity: number
-  id: string
-}
-
-
 function HomeComponent() {
-  const [garden, setGarden] = useState<Plant[]>();
+  const [garden, setGarden] = useState<GardenItem[]>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,10 +30,11 @@ function HomeComponent() {
 
   return (
     <main>
+      <h1>Tamarix</h1>
       <h3>Welcome Home!</h3>
       {garden ? <pre><ul>
-        {garden.map((item: Plant) => {
-          return <li key={item.id}>{item.plantIdentifier} x{item.quantity}</li>
+        {garden.map((item: GardenItem) => {
+          return <li key={item.gardenId}>{item.plant.name} x{item.quantity}</li>
         })}
         </ul></pre> : 'Loading...'}
     </main>
