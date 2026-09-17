@@ -7,7 +7,7 @@ export const Route = createFileRoute("/garden")({
     component: RouteComponent,
     head: () => ({
         meta: [{ title: "My Garden" }],
-    }),
+    })
 });
 
 function RouteComponent() {
