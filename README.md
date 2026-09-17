@@ -52,6 +52,11 @@ The starter pages are placeholders for the Tamarix experience.
 
 ## Local development
 
+Copy `.env.example` to `.env` and set `VITE_USER_ID` to your backend user ID.
+The `.env` file is excluded from Git. Vite exposes `VITE_` variables to the
+browser, so they must not contain secrets. Restart the development server after
+changing environment variables.
+
 Install dependencies and start the development server:
 
 ```sh
@@ -60,6 +65,12 @@ npm run dev
 ```
 
 Vite uses port `3001` by default. Open the local address printed in the terminal.
+
+During development, requests to `/api` are forwarded by Vite to the backend at
+`http://localhost:8080`. Use relative API URLs in the frontend so browser requests
+stay on the same origin. Start the backend separately. Production hosting must
+also forward `/api` to the backend; the Vite development proxy is not included in
+the generated static files.
 
 Create a production build and preview it locally:
 

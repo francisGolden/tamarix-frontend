@@ -1,4 +1,7 @@
 # Local
+.env
+.env.*
+!.env.example
 .DS_Store
 *.local
 *.log*
