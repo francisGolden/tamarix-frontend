@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState, useEffect } from 'react'
 import { GardenItem } from '../types/GardenItem';
+import { Garden } from '../components/Garden';
 
 export const Route = createFileRoute('/')({
   component: HomeComponent,
@@ -32,11 +33,12 @@ function HomeComponent() {
     <main>
       <h1>Tamarix</h1>
       <h3>Welcome Home!</h3>
-      {garden ? <pre><ul>
-        {garden.map((item: GardenItem) => {
-          return <li key={item.gardenId}>{item.plant.name} x{item.quantity}</li>
-        })}
-        </ul></pre> : 'Loading...'}
+      {garden ? 
+        <pre>
+          <Garden garden={garden} />
+        </pre> 
+        : 'Loading...'
+      }
     </main>
   )
 }
