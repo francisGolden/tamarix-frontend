@@ -5,6 +5,9 @@ import { Garden } from "../components/Garden";
 
 export const Route = createFileRoute("/")({
     component: HomeComponent,
+        head: () => ({
+        meta: [{ title: "Tamarix" }],
+    })
 });
 
 function HomeComponent() {
